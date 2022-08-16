@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "module": "ESNext", // 打包模块类型ESNext
+    "declaration": false, //默认不要声明文件
+    "noImplicitAny": false, //支持类型不标注可以默认any
+    "removeComments": true, //删除注释
+    "moduleResolution": "node", //模块解析方式
+    "esModuleInterop": true, // 允许通过es6语法引入commonjs模块
+    "jsx": "preserve", //jsx 不转义
+    "noLib": false,  //不处理类库
+    "target": "es2016", // 目标语法
+    "sourceMap": true, // 采用sourceMap
+    "outDir": "dist", //输出目录
+    "lib": [
+      "esnext",
+      "dom"
+    ], // 支持的类库 esnext及dom   
+    "allowSyntheticDefaultImports": true, //允许没有导出的模块导入
+    "experimentalDecorators": true,  //装饰器语法
+    "forceConsistentCasingInFileNames": true,//强制区分大小写
+    "resolveJsonModule": true, // 解析json模块
+    "strict": false, //严格模式
+    "skipLibCheck": true, //跳过类库检测
+         /* Skip type checking all .d.ts files. */
+    "baseUrl": ".",
+    "paths": { // 所有@vue的引用都去packages/*/src找
+      "@vue/*": [
+        "packages/*/src"
+      ]
+    }
+  },
+  "exclude": [  //需要排除的类库
+    "node_modules",
+    "**/dist",
+    "**/__tests__/**/*",
+    "**/gulpfile.ts",
+    "**/test-helper",
+    "packages/test-utils",
+    "**/*.md"
+  ]
+}

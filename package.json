@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "dev": "pnpm -C play dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.7.4",
+    "vue": "^3.2.37"
+  },
+  "dependencies": {
+    "@xin/components": "workspace:^1.0.0",
+    "@xin/theme-chalk": "workspace:^1.0.0",
+    "@xin/utils": "workspace:^1.0.0"
+  }
+}
