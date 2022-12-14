@@ -1,4 +1,17 @@
 <template>
-  测试效果
-  <XIcon color="red" size="26" class="x-icon-bianji" />
+  <XIcon color="red"
+         size="26"
+         class="x-icon-bianji" />
+  <XNumberRoll :number = "number"/>
 </template>
+<script setup lang="ts">
+import { ref } from 'vue';
+
+
+const number = ref(1234.56)
+
+setInterval(()=>{
+  number.value++
+},1000)
+
+</script>
