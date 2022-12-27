@@ -1,11 +1,22 @@
 <template>
-  <div class="numroll">
-    <ul>
-      <li v-for="(item, index) in newNum" :key="index">
-        <span v-if="item === ','">,</span>
-        <span v-else> <i ref="numberItem">0123456789</i></span>
-      </li>
-    </ul>
+  <div class="numberRoller">
+    <div v-for="(c, i) in showVal" class="rolleItem" :key="'rollerItem' + i">
+      <template v-if="c != ','">
+        <div class="cell1"></div>
+        <!-- <div class="cell1"></div> -->
+        <div class="number">{{ c }}</div>
+      </template>
+      <template v-else-if="isSeparatorWithBg">
+        <div class="cell1"></div>
+        <!-- <div class="cell1"></div> -->
+        <div class="number">{{ c }}</div>
+      </template>
+      <template v-else>
+        <div class="cell2"></div>
+        <div class="number">{{ c }}</div>
+      </template>
+    </div>
+    <div class="unit"><span>人</span></div>
   </div>
 </template>
 
@@ -48,44 +59,77 @@ export default {
 $wWidth: 1920;
 $wHeight: 1080;
 
-@mixin vw($name, $px) {
+@mixin px2vw($name, $px) {
   #{$name}: $px / $wWidth * 100vw;
 }
-@mixin vh($name, $px) {
+@mixin px2vh($name, $px) {
   #{$name}: $px / $wHeight * 100vh;
 }
 
-.numroll {
-  ul {
-    width: 100%;
-    display: flex;
-    justify-content: sapce-between;
-    & > li:nth-child(4n) {
-      background: #0000;
+// .pos_absolute() {
+//   position: absolute;
+// }
+
+.numberRoller {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  .rolleItem {
+    position: relative;
+    @include px2vw(margin-right, 4);
+    @include px2vw(margin-left, 4);
+    .cell1 {
+      @include px2vw(width, 50);
+      @include px2vh(margin-bottom, 4);
+      @include px2vh(height, 90);
     }
-    li {
-      color: #f00;
-      font-size: 68px;
-      @include vh(height, 100);
-      @include vw(margin-left, 10);
-      @include vw(margin-right, 10);
-      text-align: center;
-      list-style: none;
+    .number {
+      position: absolute;
       overflow: hidden;
-      background: #000;
-      span {
-        width: 100%;
-        display: inline-block;
-      }
-      i {
-        width: 100%;
-        display: inline-block;
-        text-align: center;
-        writing-mode: vertical-lr;
-        text-orientation: upright;
-        transform: translate(0, 0);
-        transition: transform 1s ease-in-out;
-      }
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include px2vh(font-size, 52);
+      font-weight: bold;
+    }
+    .cell2 {
+      @include px2vw(width, 50);
+      @include px2vh(margin-bottom, 4);
+      @include px2vh(height, 90);
+    }
+
+    // .bg1 {
+    //   background: -webkit-linear-gradient(
+    //     #0119a7,
+    //     #0096ff
+    //   ); /* Safari 5.1 - 6.0 */
+    //   background: -o-linear-gradient(#0119a7, #0096ff); /* Opera 11.1 - 12.0 */
+    //   background: -moz-linear-gradient(#0119a7, #0096ff); /* Firefox 3.6 - 15 */
+    //   background: linear-gradient(#0119a7, #0096ff); /* 标准的语法 */
+    // }
+    // .bg2 {
+    //   background: -webkit-linear-gradient(
+    //     #0096ff,
+    //     #0119a7
+    //   ); /* Safari 5.1 - 6.0 */
+    //   background: -o-linear-gradient(#0096ff, #0119a7); /* Opera 11.1 - 12.0 */
+    //   background: -moz-linear-gradient(#0096ff, #0119a7); /* Firefox 3.6 - 15 */
+    //   background: linear-gradient(#0096ff, #0119a7); /* 标准的语法 */
+    // }
+  }
+  .unit {
+    @include px2vw(width, 20);
+    @include px2vh(margin-bottom, 4);
+    @include px2vw(margin-left, 10);
+    @include px2vh(height, 90);
+    span {
+      @include px2vh(margin-top, 50);
+      display: inline-block;
     }
   }
 }
