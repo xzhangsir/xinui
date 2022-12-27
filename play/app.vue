@@ -1,6 +1,6 @@
 <template>
   <XIcon color="red" size="26" class="x-icon-bianji" />
-  <XNumberRoll :number="number" />
+  <XNumberRoll :number="number" :length="9" />
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
