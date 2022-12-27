@@ -1,17 +1,13 @@
 <template>
-  <XIcon color="red"
-         size="26"
-         class="x-icon-bianji" />
-  <XNumberRoll :number = "number"/>
+  <XIcon color="red" size="26" class="x-icon-bianji" />
+  <XNumberRoll :number="number" />
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 
+const number = ref(123)
 
-const number = ref(1234.56)
-
-setInterval(()=>{
-  number.value++
-},1000)
-
+setInterval(() => {
+  number.value += 123
+}, 1000)
 </script>
