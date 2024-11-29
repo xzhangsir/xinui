@@ -1,4 +1,4 @@
-import Icon from "./src/icon.vue"
+import Icon from './src/icon.vue'
 /* import type {App,Plugin} from "vue"
 
 type SFCWithInstall<T> = T & Plugin
@@ -9,12 +9,10 @@ const withInstall = <T>(component:T)=>{
   return component as SFCWithInstall<T> 
 }
  */
-import {withInstall} from "@xin/utils/with-install"
+import { withInstall } from '@xin/utils/with-install'
 
 const XIcon = withInstall(Icon)
 
-export {
-  XIcon
-}
+export { XIcon }
 
 export default XIcon
